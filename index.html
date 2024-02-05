@@ -1,0 +1,271 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Tensorflow.js Speech Commands Example</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css"
+			integrity="sha256-8nf+BDtOgthqqdcfZXfDwth8LL6k314ILswPBDzXMp4="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://bulma.io/css/bulma-docs.min.css?v=202307181508"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+		/>
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/animate.css" />
+	</head>
+
+	<!-- BODY -->
+	<body>
+		<!-- CONTENT-START -->
+		<div class="content">
+			<!-- LOGO  -->
+			<div class="logo">
+				<span class="bold"><span style="color: red">❤</span> DIALECT </span>
+				HELPER
+			</div>
+			<p></p>
+
+			<!-- TABS -->
+			<div class="tabs is-medium is-centered is-boxed">
+				<ul>
+					<li class="is-active" id="tab-practice">
+						<a onclick="switchTab(0)">PRACTICE</a>
+					</li>
+					<li id="tab-test"><a onclick="switchTab(1)">TEST YOURSELF</a></li>
+				</ul>
+			</div>
+
+			<!-- CONTAINER - PRACTICE -->
+			<div id="practice-container">
+				<h5>
+					<span class="bold">LISTEN!</span> Hokkien translation of the English
+					words.
+				</h5>
+				<div class="columns is-multiline is-mobile">
+					<!-- row 1 -->
+					<div class="column is-one-third">
+						<div class="notification is-info">
+							<span class="bold">BONE</span>
+							<br />kut-tao
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('bone')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!--  -->
+					<div class="column is-one-third">
+						<div class="notification is-info">
+							<span class="bold">BROKEN BONE</span>
+							<br />kut-qi
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('broken-bone')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!--  -->
+					<div class="column is-one-third">
+						<div class="notification is-info">
+							<span class="bold">BRUISE</span>
+							<br />orh-chey
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('bruise')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!-- row 2 -->
+					<div class="column is-half">
+						<div class="notification is-info">
+							<span class="bold">DIZZINESS</span>
+							<br />hin
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('dizziness')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!--  -->
+					<div class="column is-half">
+						<div class="notification is-info">
+							<span class="bold">FEVER</span>
+							<br />huat-sio
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('fever')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!-- row 3 -->
+					<div class="column is-one-third">
+						<div class="notification is-info">
+							<span class="bold">FLU</span>
+							<br />siong-hong
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('flu')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!--  -->
+					<div class="column is-one-third">
+						<div class="notification is-info">
+							<span class="bold">NAUSEA</span>
+							<br />ai-tor
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('nausea')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!--  -->
+					<div class="column is-one-third">
+						<div class="notification is-info">
+							<span class="bold">NOSE</span>
+							<br />pi-kang
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('nose')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!-- row 4 -->
+					<div class="column is-half">
+						<div class="notification is-info">
+							<span class="bold">RUNNY NOSE</span>
+							<br />lau-pi-chui
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('runny-nose')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+					<!--  -->
+					<div class="column is-half">
+						<div class="notification is-info">
+							<span class="bold">VOMIT</span>
+							<br />tor
+							<p></p>
+							<button
+								class="button is-rounded is-light is-outlined"
+								onclick="playAudio('vomit')"
+							>
+								Play audio
+							</button>
+						</div>
+					</div>
+				</div>
+				<div>
+					<h5>
+						<span class="bold">TRY IT!</span> Press and hold button to speak
+						into the mic.<br />
+						Release it to stop recording and wait for the prediction.
+					</h5>
+				</div>
+
+				<div class="btn" id="btn-try" style="display: revert">
+					Press and hold to record
+					<div class="circle btn--blink" id="lights"></div>
+				</div>
+			</div>
+
+			<!-- CONTAINER - GAME  -->
+			<div id="test-container" style="display: none">
+				<!--  page1 -->
+				<div id="gamescreen1">
+					<h5>
+						<span class="bold">INSTRUCTIONS TO PLAY</span><br />
+						1. You are to translate the English word displayed into Hokkien.<br />
+						2. The 10 words tested are picked randomly from the PRACTICE
+						page.<br />
+						3. You will have 5 secs to translate and pronounce the word
+						accurately.<br />
+						4. Press and hold the record button to record your input.<br />
+						5. <span class="bold">IMPT: </span> Release the button when you are
+						speaking.<br />
+						Good Luck!
+					</h5>
+					<div class="btn" id="btn-start" style="display: revert">Start</div>
+				</div>
+
+				<!-- page2 -->
+				<div id="gamescreen2">
+					<div class="btn" id="btn-record" style="display: revert">
+						Press and hold to record
+						<div class="circle btn--blink" id="lights"></div>
+					</div>
+
+					<progress
+						class="progress is-info"
+						value="10"
+						max="100"
+						id="progress"
+					></progress>
+
+					<div id="gameword-container"></div>
+
+					<!-- <div id="label-container"></div> -->
+				</div>
+
+				<!-- page3 -->
+				<div id="gamescreen3">
+					<div id="result-container"></div>
+					<div class="btn" id="btn-tryagain" style="display: revert">
+						Try Again?
+					</div>
+				</div>
+			</div>
+
+			<!-- LABEL -->
+			<div id="label-container"></div>
+
+			<!-- CONTENT - END -->
+		</div>
+
+		<!-- JAVASCRIPT -->
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.13.0/dist/tf.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.5.4/dist/speech-commands.min.js"></script>
+
+		<script src="index.js"></script>
+		<script src="howler.js"></script>
+	</body>
+</html>
