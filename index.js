@@ -271,12 +271,12 @@ btnTry.ontouchstart = btnTry.onmousedown = function (e) {
 
 btnTry.ontouchend = btnTry.onmouseup = function (e) {
 	e.preventDefault();
+	console.log(recognizer.isListening())
 	if (recognizer.isListening() || state == 1) {
 		recognizer.stopListening();
 		state = 0; // will stop recognizer
 		showTTS = false;
 	}
-
 	console.log("btnTry - stop");
 	recordingStopAni();
 };
