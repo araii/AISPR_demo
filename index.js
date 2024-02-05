@@ -158,33 +158,6 @@ function recordingStopAni() {
 	ctnLabel.innerHTML = `Final prediction: ${bestPrediction}`;
 	// tabulate score
 	if (state == 1 && bestPrediction == gameWord[0]) gameScore++;
-
-	/** // check prediction score...
-	// console.log("final", predictions);
-	if (predictions.length == 0) return;
-	// make array of words detected from predictions[[score, label], ...]
-	let probs = predictions.map((arr) => arr[0]);
-	// get max_score from array
-	let max_score = Math.max(...probs);
-	// get index of the max score
-	let max_idx = probs.indexOf(max_score);
-	// log best prediction
-	// bestPrediction = predictions[max_idx][1];
-	*/
-
-	/** // check prediction words...
-	//can't use this method becos alot of false positive !!!!
-	// console.log("final", predictions);
-	if (predictions.length == 0) return;
-	// make array of words detected from predictions[[score, label], ...]
-	let prob_words = predictions.map((arr) => arr[1]);
-	// check if game_word exists in array
-	let res = prob_words.filter((ele) => {
-		return ele === gameWord[0];
-	}).length;
-
-	Result.innerHTML = gameWord + " detected " + res + " times ";
-	 */
 }
 
 //------- Game Functions -------
@@ -288,7 +261,7 @@ btnRec.onmouseup = function (e) {
 	recordingStopAni();
 };
 
-btnTry.onmousedown = function (e) {
+btnTry.ontouchstart = btnTry.onmousedown = function (e) {
 	e.preventDefault();
 	state = 1;
 	showTTS = true;
@@ -296,7 +269,7 @@ btnTry.onmousedown = function (e) {
 	runInference();
 };
 
-btnTry.onmouseup = function (e) {
+btnTry.ontouchend = btnTry.onmouseup = function (e) {
 	e.preventDefault();
 	if (recognizer.isListening() || state == 1) {
 		recognizer.stopListening();
