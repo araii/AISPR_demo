@@ -30,12 +30,13 @@ body {
 	width: 0.7rem;
 	position: relative;
 	background-color: rgb(241, 10, 83);
-	left: 385px;
-	float: left;
+	/* left: 385px; */
+	/* float: left; */
+	top: -20px;
 	border-radius: 50%;
 	box-sizing: border-box;
 	/* box-shadow: -1px 16px 24px #cbced1, -71px -151px 245px white; */
-	opacity: 0.1;
+	opacity: 0.2;
 }
 
 .online {
