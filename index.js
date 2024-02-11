@@ -24,6 +24,8 @@ const ctnResult = document.getElementById("result-container");
 const btnRestart = document.getElementById("btn-tryagain");
 // practice screen
 const btnTry = document.getElementById("btn-try");
+const LightsPractice = document.getElementById("lights-practice");
+const btnTryCopy = document.getElementById("btn-try-copy");
 
 // For navi
 let tabIdx = 0;
@@ -57,8 +59,9 @@ let scores;
 let interval, timer;
 
 // the link to your model provided by Teachable Machine export panel
-// const URL = "http://127.0.0.1:8008/hokkien_trnsf/";
-const URL = "https://araii.github.io/AISPR_demo/hokkien_trnsf/";
+// const URL =
+const URL = "http://127.0.0.1:8008/hokkien_trnsf/";
+// "https://araii.github.io/AISPR_demo/hokkien_trnsf/";
 
 async function createModel() {
 	const checkpointURL = URL + "model.json"; // model topology
@@ -149,12 +152,16 @@ function recordingStartAni() {
 	predictions = [];
 	// show..
 	Lights.classList.add("is-active");
+	LightsPractice.classList.add("is-active");
+	// btnTryCopy.innerHTML = "Speak when red dot starts blinking";
 	showElement(ctnLabel);
 }
 
 function recordingStopAni() {
 	// hide...
 	Lights.classList.remove("is-active");
+	LightsPractice.classList.remove("is-active");
+	// btnTryCopy.innerHTML = "Press and hold";
 	ctnLabel.innerHTML = `Final prediction: ${bestPrediction}`;
 	// tabulate score
 	if (state == 1 && bestPrediction == gameWord[0]) gameScore++;
@@ -244,13 +251,13 @@ function runInference() {
 }
 
 //------- Button Functions -------
-btnRec.onmousedown = function (e) {
+btnRec.ontouchstart = btnRec.onmousedown = function (e) {
 	e.preventDefault();
 	console.log("btnRec - press");
 	runInference();
 };
 
-btnRec.onmouseup = function (e) {
+btnRec.ontouchend = btnRec.onmouseup = function (e) {
 	e.preventDefault();
 	// add slight delay before stopping ??
 	// timer = setTimeout(() => {}, 500);
@@ -271,7 +278,7 @@ btnTry.ontouchstart = btnTry.onmousedown = function (e) {
 
 btnTry.ontouchend = btnTry.onmouseup = function (e) {
 	e.preventDefault();
-	console.log(recognizer.isListening())
+	console.log(recognizer.isListening());
 	if (recognizer.isListening() || state == 1) {
 		recognizer.stopListening();
 		state = 0; // will stop recognizer
