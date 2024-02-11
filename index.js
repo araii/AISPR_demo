@@ -60,8 +60,8 @@ let interval, timer;
 
 // the link to your model provided by Teachable Machine export panel
 // const URL =
-const URL = "http://127.0.0.1:8008/hokkien_trnsf/";
-// "https://araii.github.io/AISPR_demo/hokkien_trnsf/";
+const URL = "https://araii.github.io/AISPR_demo/hokkien_trnsf/"
+	// "http://127.0.0.1:8008/hokkien_trnsf/";
 
 async function createModel() {
 	const checkpointURL = URL + "model.json"; // model topology
