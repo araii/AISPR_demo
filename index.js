@@ -16,6 +16,7 @@ const ctnGameScrn2 = document.getElementById("gamescreen2");
 const btnRec = document.getElementById("btn-record");
 const Lights = document.getElementById("lights");
 const Progress = document.getElementById("progress");
+const tagWarning = document.getElementById("tag");
 const ctnLabel = document.getElementById("label-container");
 const ctnGameWord = document.getElementById("gameword-container");
 // gamescreen 3
@@ -60,8 +61,8 @@ let interval, timer;
 
 // the link to your model provided by Teachable Machine export panel
 // const URL =
-const URL = "https://araii.github.io/AISPR_demo/hokkien_trnsf/"
-	// "http://127.0.0.1:8008/hokkien_trnsf/";
+const URL = "https://araii.github.io/AISPR_demo/hokkien_trnsf/";
+// "http://127.0.0.1:8008/hokkien_trnsf/";
 
 async function createModel() {
 	const checkpointURL = URL + "model.json"; // model topology
@@ -79,51 +80,6 @@ async function createModel() {
 	return recognizer;
 }
 
-async function init() {
-	//
-	for (let i = 0; i < classLabels.length; i++) {
-		ctnLabel.appendChild(document.createElement("div"));
-	}
-
-	// listen() takes two arguments:
-	// 1. A callback function that is invoked anytime a word is recognized.
-	// 2. A configuration object with adjustable fields
-	recognizer.listen(
-		(result) => {
-			// probability of prediction for each class
-			scores = result.scores;
-			// get the max value in the array
-			let maxScore = Math.max(...scores);
-			// get the index of the max value
-			let maxIdx = scores.indexOf(maxScore);
-
-			let bestPrediction = classLabels[maxIdx];
-			predictions.push([maxScore, bestPrediction]);
-			// console.log(maxScore, maxIdx, bestPrediction);
-			ctnLabel.innerHTML = bestPrediction;
-
-			// render the probability scores per class
-			for (let i = 0; i < classLabels.length; i++) {
-				classPrediction = classLabels[i] + ": " + scores[i].toFixed(2);
-				ctnLabel.childNodes[i].innerHTML = classPrediction;
-			}
-		},
-		{
-			// in case listen should return result.spectrogram
-			includeSpectrogram: false,
-			probabilityThreshold: 0.75,
-			invokeCallbackOnNoiseAndUnknown: true,
-			// probably want between 0.5 and 0.75. More info in README
-			overlapFactor: 0.75,
-		}
-	);
-
-	// stop the recognition in 2secs.
-	timer = setTimeout(() => {
-		recognizer.stopListening();
-	}, 2000);
-}
-
 //-------- Page Functions ------
 function switchTab(nr) {
 	// console.log( "tabIdx", tabIdx, nr );
@@ -133,7 +89,7 @@ function switchTab(nr) {
 	if (TABS[tabIdx]) {
 		TABS[tabIdx].classList.remove("is-active");
 		hideElement(CTNS[tabIdx]);
-		ctnLabel.innerHTML = "";
+		ctnLabel.innerHTML = "&nbsp;";
 	}
 	// reset game view
 	hideElement(ctnGameScrn2);
@@ -148,7 +104,7 @@ function switchTab(nr) {
 
 function recordingStartAni() {
 	// reset...
-	ctnLabel.innerHTML = "";
+	ctnLabel.innerHTML = "&nbsp;";
 	predictions = [];
 	// show..
 	Lights.classList.add("is-active");
@@ -179,7 +135,7 @@ function gameStart() {
 	state = 1;
 	gameIdx = 0;
 	gameScore = 0;
-	ctnLabel.innerHTML = "";
+	ctnLabel.innerHTML = "&nbsp;";
 	hideElement(ctnGameScrn1);
 	showElement(ctnGameScrn2);
 	// prep...
@@ -212,10 +168,10 @@ function gameEnd() {
 	console.log("- End Game -", gameScore);
 	// hide...
 	hideElement(ctnGameScrn2);
-	ctnLabel.innerHTML = "";
+	ctnLabel.innerHTML = "&nbsp;";
 	// show...
 	showElement(ctnGameScrn3);
-	ctnResult.innerHTML = `<h5>Game Over - Your score ${gameScore} out of 10</h5>.`;
+	ctnResult.innerHTML = `<h5>Game Over - Your score ${gameScore} out of 10</h5>`;
 }
 
 function runInference() {
@@ -302,11 +258,18 @@ btnRestart.onclick = function (e) {
 
 //------ Helpers Function ------
 function countdown(seconds) {
-	// console.log("countdown");
 	for (let i = 0; i < seconds; i++) {
+		// update
 		setTimeout(() => {
-			Progress.value += Math.floor(100 / seconds);
-			// console.log(`i: ${i}`);
+			// Progress.value += Math.floor(100 / seconds);
+			console.log(`i: ${i}`);
+			if (i == 2) {
+				tagEnable();
+			}
+
+			if (i == 4) {
+				tagDisable();
+			}
 		}, 1000 * i);
 	}
 }
@@ -316,7 +279,17 @@ function hideElement(ele) {
 }
 
 function showElement(ele) {
-	ele.style.display = "revert";
+	ele.style.display = "inherit"; //revert
+}
+
+function tagEnable() {
+	tagWarning.classList.add("is-active");
+	showElement(tagWarning);
+}
+
+function tagDisable() {
+	hideElement(tagWarning);
+	tagWarning.classList.remove("is-active");
 }
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
