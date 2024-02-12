@@ -1,11 +1,6 @@
 body {
 	max-width: 600px;
 	margin: 1% auto;
-	/* background: #acd4e4; */
-	/* font-family: tahoma, helvetica neue, helvetica, arial, sans-serif; */
-	/* background: -webkit-linear-gradient(to right, #acd4e4, #bbe0df); */
-	/* background: -webkit-linear-gradient(left, #acd4e4, #bbe0df); */
-	/* background: linear-gradient(to right, #acd4e4, #bbe0df); */
 	text-align: center;
 	font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen,
 		Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
@@ -23,8 +18,8 @@ body {
 
 .logo {
 	font-size: 30px;
-	padding-top: 10%;
-	padding-bottom: 5%;
+	padding-top: 5%;
+	padding-bottom: 3%;
 }
 
 .circle {
@@ -32,8 +27,6 @@ body {
 	width: 0.7rem;
 	position: relative;
 	background-color: rgb(241, 10, 83);
-	/* left: 385px; */
-	/* float: left; */
 	top: -90%;
 	border-radius: 50%;
 	box-sizing: border-box;
