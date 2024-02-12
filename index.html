@@ -52,6 +52,7 @@
 					<span class="bold">LISTEN!</span> Hokkien translation of the English
 					words.
 				</h5>
+				<!-- start columns -->
 				<div class="columns is-multiline is-mobile">
 					<!-- row 1 -->
 					<div class="column is-one-third">
@@ -194,19 +195,22 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<h5>
-						<span class="bold">TRY IT!</span> Press and hold button until the
-						<span style="color: red">red dot </span>starts blinking, then speak
-						into the mic.
-					</h5>
-				</div>
+				<!-- end columns -->
 
-				<div class="btn" id="btn-try" style="display: revert">
-					<div id="btn-try-copy">
-						Press & hold, speak when
-						<span style="color: red">red dot </span>starts blinking
-					</div>
+				<h5>
+					<span class="bold">TRY IT!</span> Press and hold button until the
+					<span style="color: red">red dot </span>starts blinking, then speak
+					into the mic. Release when you are done speaking.
+				</h5>
+
+				<!-- Practice -record button -->
+				<div
+					class="button is-medium is-responsive"
+					id="btn-try"
+					style="display: revert"
+				>
+					Press & hold, speak when
+					<span style="color: red">red dot </span>starts blinking
 					<div class="circle btn--blink" id="lights-practice"></div>
 				</div>
 			</div>
@@ -215,21 +219,33 @@
 			<div id="test-container" style="display: none">
 				<!--  page1 -->
 				<div id="gamescreen1">
-					<h5>
-						<span class="bold">INSTRUCTIONS TO PLAY</span><br />
-						1. You are to translate the English word displayed into Hokkien.<br />
-						2. The 10 words tested are picked randomly from the PRACTICE
-						page.<br />
-						3. You will have 5 secs to translate and pronounce the word
-						accurately.<br />
-						4. Press and hold button until the
-						<span style="color: red">red dot </span>starts blinking, <br />then
-						speak into the mic.<br />
-						5. Release the button when you are done speaking<br />to check your
-						pronounciation.<br />
-						Good Luck!
-					</h5>
-					<div class="btn" id="btn-start" style="display: revert">Start</div>
+					<h5>INSTRUCTIONS TO PLAY</h5>
+					<ol style="text-align: left">
+						<li>
+							You are to translate the English word displayed into Hokkien.
+						</li>
+						<li>
+							The 10 words tested are picked randomly from the PRACTICE page.
+						</li>
+						<li>
+							You will have 5 secs to translate and pronounce the word
+							accurately.
+						</li>
+						<li>
+							To record, press and hold button until the
+							<span style="color: red">red dot </span>starts blinking,
+							<br />then speak into the mic.
+						</li>
+						<li>Release the button to register the translation.</li>
+					</ol>
+					<span class="bold">Good Luck!</span>
+					<div
+						class="button is-medium is-responsive"
+						id="btn-start"
+						style="display: revert"
+					>
+						Start
+					</div>
 				</div>
 
 				<!-- page2 -->
@@ -237,18 +253,20 @@
 					Press and hold button until the
 					<span style="color: red">red dot </span>starts blinking, then speak
 					into the mic. Release button when you are done speaking.
-					<div class="btn" id="btn-record" style="display: revert">
+					<!-- Game - Record button -->
+					<div
+						class="button is-medium is-responsive"
+						id="btn-record"
+						style="display: revert"
+					>
 						Press & hold, speak when
-						<span style="color: red">red dot starts blinking </span>
+						<span style="color: red">red dot</span> starts blinking
 						<div class="circle btn--blink" id="lights"></div>
 					</div>
 
-					<progress
-						class="progress is-info"
-						value="10"
-						max="100"
-						id="progress"
-					></progress>
+					<progress class="progress is-info" value="10" max="100" id="progress">
+						<div>NEXT WORD</div>
+					</progress>
 
 					<div id="gameword-container"></div>
 
@@ -258,7 +276,11 @@
 				<!-- page3 -->
 				<div id="gamescreen3">
 					<div id="result-container"></div>
-					<div class="btn" id="btn-tryagain" style="display: revert">
+					<div
+						class="button is-medium is-responsive"
+						id="btn-tryagain"
+						style="display: revert"
+					>
 						Try Again?
 					</div>
 				</div>
