@@ -198,7 +198,7 @@ function runInference() {
 		},
 		{
 			includeSpectrogram: false,
-			probabilityThreshold: 0.75, // 0.9
+			probabilityThreshold: 0.1, // 0.9
 			invokeCallbackOnNoiseAndUnknown: true,
 			// probably want between 0.5 and 0.75. More info in README
 			overlapFactor: 0.999, // 0.89
