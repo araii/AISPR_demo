@@ -34,7 +34,6 @@
 				<span class="bold"><span style="color: red">❤</span> DIALECT </span>
 				HELPER
 			</div>
-			<p></p>
 
 			<!-- TABS -->
 			<div class="tabs is-medium is-centered is-boxed">
@@ -52,6 +51,7 @@
 					<span class="bold">LISTEN!</span> Hokkien translation of the English
 					words.
 				</h5>
+
 				<!-- start columns -->
 				<div class="columns is-multiline is-mobile">
 					<!-- row 1 -->
@@ -198,7 +198,9 @@
 				<!-- end columns -->
 
 				<h5>
-					<span class="bold">TRY IT!</span> Press and hold button until the
+					<span class="bold">TRY IT!</span>
+
+					Press and hold button until the
 					<span style="color: red">red dot </span>starts blinking, then speak
 					into the mic. Release when you are done speaking.
 				</h5>
@@ -219,7 +221,9 @@
 			<div id="test-container" style="display: none">
 				<!--  page1 -->
 				<div id="gamescreen1">
-					<h5>INSTRUCTIONS TO PLAY</h5>
+					<h5>
+						<span class="bold">INSTRUCTIONS TO PLAY</span>
+					</h5>
 					<ol style="text-align: left">
 						<li>
 							You are to translate the English word displayed into Hokkien.
@@ -233,12 +237,13 @@
 						</li>
 						<li>
 							To record, press and hold button until the
-							<span style="color: red">red dot </span>starts blinking,
-							<br />then speak into the mic.
+							<span style="color: red">red dot </span>starts blinking, then
+							speak into the mic.
 						</li>
 						<li>Release the button to register the translation.</li>
 					</ol>
-					<span class="bold">Good Luck!</span>
+					<h5>Good Luck!</h5>
+
 					<div
 						class="button is-medium is-responsive"
 						id="btn-start"
@@ -250,9 +255,33 @@
 
 				<!-- page2 -->
 				<div id="gamescreen2">
-					Press and hold button until the
+					<!-- Press and hold button until the
 					<span style="color: red">red dot </span>starts blinking, then speak
-					into the mic. Release button when you are done speaking.
+					into the mic. Release button when you are done speaking. -->
+
+					<progress
+						class="progress is-info"
+						value="10"
+						max="100"
+						id="progress"
+						style="display: none"
+					></progress>
+					<p></p>
+
+					<div class="content">
+						<!-- next word indicator -->
+						<div class="level-right" style="">
+							<div
+								class="tag is-medium is-danger btn--blink"
+								id="tag"
+								style="display: none; position: fixed"
+							>
+								Next word
+							</div>
+						</div>
+						<div class="title" id="gameword-container"></div>
+					</div>
+
 					<!-- Game - Record button -->
 					<div
 						class="button is-medium is-responsive"
@@ -263,14 +292,6 @@
 						<span style="color: red">red dot</span> starts blinking
 						<div class="circle btn--blink" id="lights"></div>
 					</div>
-
-					<progress class="progress is-info" value="10" max="100" id="progress">
-						<div>NEXT WORD</div>
-					</progress>
-
-					<div id="gameword-container"></div>
-
-					<!-- <div id="label-container"></div> -->
 				</div>
 
 				<!-- page3 -->
@@ -287,8 +308,8 @@
 			</div>
 
 			<!-- LABEL -->
+			<p></p>
 			<div id="label-container"></div>
-
 			<!-- CONTENT - END -->
 		</div>
 
