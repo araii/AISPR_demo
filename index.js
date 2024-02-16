@@ -263,7 +263,7 @@ function countdown(seconds) {
 		setTimeout(() => {
 			// Progress.value += Math.floor(100 / seconds);
 			console.log(`i: ${i}`);
-			if (i == 2) {
+			if (i == 3) {
 				tagEnable();
 			}
 
