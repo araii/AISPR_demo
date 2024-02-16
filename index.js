@@ -283,13 +283,13 @@ function showElement(ele) {
 }
 
 function tagEnable() {
-	tagWarning.classList.add("is-active");
+	// tagWarning.classList.add("is-active");
 	showElement(tagWarning);
 }
 
 function tagDisable() {
 	hideElement(tagWarning);
-	tagWarning.classList.remove("is-active");
+	// tagWarning.classList.remove("is-active");
 }
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
