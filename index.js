@@ -201,7 +201,7 @@ function runInference() {
 			probabilityThreshold: 0.9, // 0.75
 			invokeCallbackOnNoiseAndUnknown: true,
 			// probably want between 0.5 and 0.75. More info in README
-			overlapFactor: 0.999, // 0.89
+			overlapFactor: 0.899, // 0.89
 		}
 	);
 }
